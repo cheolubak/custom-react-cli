@@ -1,7 +1,7 @@
 {
   "name": "custom-cli",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "custom-cli.js",
   "devDependencies": {
     "@types/node": "^18.11.19"
   },
@@ -31,5 +31,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/cheolubak/custom-react-cli"
+  },
+  "files": [
+    "./"
+  ],
+  "bin": {
+    "cr": "./bin/cr"
   }
 }
