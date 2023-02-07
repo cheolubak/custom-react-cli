@@ -1,8 +1,9 @@
 module.exports = {
   componentData: (fileName) =>
     `import React from 'react';
+import { ${fileName}Props } from './${fileName}Props';
 
-function ${fileName}({ ...props }) {
+function ${fileName}({ ...props }: ${fileName}Props) {
   return <div>${fileName}</div>;
 }
 
