@@ -6,16 +6,17 @@ const {
   generateStoreFiles,
   generateModelFiles,
 } = require("./file");
+const { version } = require("./package.json");
 
 yargs(hideBin(process.argv))
-  .version("0.1.0")
+  .version(version)
   .command({
     command: ["generate", "g"],
     describe: "Generate a new file",
     builder: {
       name: {
         describe: "File name",
-        demandOption: true,
+        demandOption: false,
         type: "string",
       },
       type: {

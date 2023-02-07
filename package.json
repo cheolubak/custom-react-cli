@@ -1,6 +1,6 @@
 {
-  "name": "custom-cli",
-  "version": "0.1.0",
+  "name": "@cheolubak/custom-react-cli",
+  "version": "0.1.2",
   "main": "custom-cli.js",
   "devDependencies": {
     "@types/node": "^18.11.19"

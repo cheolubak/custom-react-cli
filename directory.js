@@ -21,7 +21,7 @@ function mkdirCommon(name) {
     for (let j = 0; j <= i; j++) {
       tempPaths.push(temp[j]);
     }
-    const tempPathName = path.join(__dirname, tempPaths.join("/"));
+    const tempPathName = path.join(process.cwd(), tempPaths.join("/"));
     const existsPath = fs.existsSync(tempPathName);
     if (!existsPath) {
       fs.mkdirSync(tempPathName);
@@ -46,7 +46,7 @@ function mkdirForStore(name) {
 
   if (temp.length > 1) {
     const pathName = path.join(
-      __dirname,
+      process.cwd(),
       temp.slice(0, temp.length - 1).join("/")
     );
 
@@ -54,7 +54,7 @@ function mkdirForStore(name) {
 
     return [pathName, fileName];
   } else {
-    const pathName = path.join(__dirname, "stores");
+    const pathName = path.join(process.cwd(), "stores");
     const existsPath = fs.existsSync(pathName);
     if (!existsPath) {
       fs.mkdirSync(pathName);
@@ -70,7 +70,7 @@ function mkdirForModel(name) {
   if (temp.length > 1) {
     const tempPath = temp.slice(0, temp.length - 1).join("/") + "/" + fileName;
     const pathName = path.join(
-      __dirname,
+      process.cwd(),
       tempPath.charAt(0) === "/" ? tempPath.slice(1) : tempPath
     );
 
@@ -82,7 +82,7 @@ function mkdirForModel(name) {
     }
     return [pathName, fileName];
   } else {
-    const pathName = path.join(__dirname, "models");
+    const pathName = path.join(process.cwd(), "models");
     const existsPath = fs.existsSync(pathName);
     if (!existsPath) {
       fs.mkdirSync(pathName);
@@ -96,7 +96,7 @@ function mkdirForComponent(name) {
   const fileName = getFileNameForComponent(name);
   const tempPath = temp.slice(0, temp.length - 1).join("/") + "/" + fileName;
   const pathName = path.join(
-    __dirname,
+    process.cwd(),
     tempPath.charAt(0) === "/" ? tempPath.slice(1) : tempPath,
     fileName
   );
