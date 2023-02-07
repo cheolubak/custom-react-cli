@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
   mkdir: (type, name) => {
     if (type === "store") {
-      mkdirForStore(name);
+      return mkdirForStore(name);
     } else if (type === "model") {
       return mkdirForModel(name);
     } else if (type === "component") {
@@ -25,6 +25,7 @@ function mkdirCommon(name) {
     const existsPath = fs.existsSync(tempPathName);
     if (!existsPath) {
       fs.mkdirSync(tempPathName);
+      console.log("Generated directory: " + tempPathName);
     }
   }
 }
@@ -61,6 +62,7 @@ function mkdirForStore(name) {
     const existsPath = fs.existsSync(pathName);
     if (!existsPath) {
       fs.mkdirSync(pathName);
+      console.log("Generated directory: " + pathName);
     }
     return [pathName, fileName];
   }
@@ -82,6 +84,7 @@ function mkdirForModel(name) {
     const existsPath = fs.existsSync(pathName);
     if (!existsPath) {
       fs.mkdirSync(pathName);
+      console.log("Generated directory: " + pathName);
     }
     return [pathName, fileName];
   } else {
@@ -89,6 +92,7 @@ function mkdirForModel(name) {
     const existsPath = fs.existsSync(pathName);
     if (!existsPath) {
       fs.mkdirSync(pathName);
+      console.log("Generated directory: " + pathName);
     }
     return [pathName, fileName];
   }
@@ -105,6 +109,7 @@ function mkdirForComponent(name) {
   const existsPath = fs.existsSync(pathName);
   if (!existsPath) {
     fs.mkdirSync(pathName);
+    console.log("Generated directory: " + pathName);
   }
   return [pathName, fileName];
 }
