@@ -21,7 +21,7 @@ function mkdirCommon(name) {
     for (let j = 0; j <= i; j++) {
       tempPaths.push(temp[j]);
     }
-    const tempPathName = path.join(process.cwd(), tempPaths.join("/"));
+    const tempPathName = path.join(process.cwd(), ...tempPaths);
     const existsPath = fs.existsSync(tempPathName);
     if (!existsPath) {
       fs.mkdirSync(tempPathName);
@@ -37,7 +37,10 @@ function getFileNameForStore(name) {
 function getFileNameForComponent(name) {
   const temp = name.split("/");
   const tempName = temp[temp.length - 1].toLowerCase();
-  return tempName.charAt(0).toUpperCase() + tempName.slice(1);
+  return tempName
+    .split("-")
+    .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
+    .join("");
 }
 
 function mkdirForStore(name) {
@@ -94,12 +97,8 @@ function mkdirForModel(name) {
 function mkdirForComponent(name) {
   const temp = name.split("/");
   const fileName = getFileNameForComponent(name);
-  const tempPath = temp.slice(0, temp.length - 1).join("/") + "/" + fileName;
-  const pathName = path.join(
-    process.cwd(),
-    tempPath.charAt(0) === "/" ? tempPath.slice(1) : tempPath,
-    fileName
-  );
+  const tempPath = path.join(process.cwd(), ...temp.slice(0, temp.length - 1));
+  const pathName = path.join(tempPath, fileName);
 
   mkdirCommon(name);
 

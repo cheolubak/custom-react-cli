@@ -27,6 +27,7 @@ yargs(hideBin(process.argv))
       },
     },
     handler: function ({ name, type }) {
+      console.log("asdasdasd", process.cwd());
       if (type !== "store" && type !== "model" && type !== "component") {
         throw Error("Check your types.");
       }
