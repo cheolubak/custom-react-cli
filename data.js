@@ -2,9 +2,13 @@ module.exports = {
   componentData: (fileName) =>
     `import React from 'react';
 import { ${fileName}Props } from './${fileName}Props';
+import { ${fileName}Styled } from './${fileName}Styled';
 
 function ${fileName}({ ...props }: ${fileName}Props) {
-  return <div>${fileName}</div>;
+  /**
+   * TODO : Styled default is div . Changes are required to suit.
+   **/
+  return <${fileName}Styled>${fileName}</${fileName}Styled>;
 }
 
 export default ${fileName};`,
@@ -12,6 +16,9 @@ export default ${fileName};`,
   styledData: (fileName) => `import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
+/**
+ * TODO : Styled default is div . Changes are required to suit.
+ **/
 export const ${fileName}Styled = styled.div([
   tw\`\`
 ]);`,
@@ -21,7 +28,7 @@ export const ${fileName}Styled = styled.div([
 export interface ${fileName}Props extends HTMLAttributes<HTMLElement> {
 }`,
 
-  indexData: (fileName) => `export { default } from './${fileName}.tsx';`,
+  indexData: (fileName) => `export { default } from './${fileName}';`,
 
   storeData: (fileName) => `import { atom } from 'recoil';
 
