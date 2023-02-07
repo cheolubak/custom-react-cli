@@ -3,7 +3,7 @@ module.exports = {
     `import React from 'react';
 
 function ${fileName}({ ...props }) {
-  return <div>${fileName}</div>
+  return <div>${fileName}</div>;
 }
 
 export default ${fileName};`,
@@ -15,12 +15,12 @@ export const ${fileName}Styled = styled.div([
   tw\`\`
 ]);`,
 
-  propsData: (fileName) => `import {HTMLAttributes} from 'react';
+  propsData: (fileName) => `import { HTMLAttributes } from 'react';
 
 export interface ${fileName}Props extends HTMLAttributes<HTMLElement> {
 }`,
 
-  indexData: (fileName) => `export { default } './${fileName}.tsx';`,
+  indexData: (fileName) => `export { default } from './${fileName}.tsx';`,
 
   storeData: (fileName) => `import { atom } from 'recoil';
 
