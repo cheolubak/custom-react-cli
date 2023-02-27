@@ -8,7 +8,7 @@ function ${fileName}({ ...props }: ${fileName}Props) {
   /**
    * TODO : Styled default is div . Changes are required to suit.
    **/
-  return <${fileName}Styled>${fileName}</${fileName}Styled>;
+  return <${fileName}Styled {...props}>${fileName}</${fileName}Styled>;
 }
 
 export default ${fileName};
